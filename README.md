@@ -5,3 +5,14 @@
 <p align="center">
   <img height="500" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/TrimNN_figure.png"/>
 </p>
+
+
+## Python package Dependencies
+* tqdm
+* numpy
+* pandas
+* scipy
+* tensorboardX
+* python-igraph == 0.9.6
+* torch >= 1.13.1
+* dgl == 1.1.2
