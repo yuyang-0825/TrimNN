@@ -16,3 +16,7 @@
 * python-igraph == 0.9.6
 * torch >= 1.13.1
 * dgl == 1.1.2
+
+## Data Generation
+
+## Model Training and Evaluation
