@@ -316,7 +316,7 @@ if __name__ == "__main__":
     # k-hop
     k = 1
     graph_dir = 'graph/G_N16_triangle_NL8_1.gml'
-    model_path = 'model/epoch97_triangle+triedge.pt'
+    model_path = 'model/TrimNN.pt'
 
     # celltype number
     labelnum = 8
