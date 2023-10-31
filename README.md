@@ -1,4 +1,4 @@
-# Exploring the building blocks of cell organization as high-order network motifs with graph isomorphism network
+# Exploring building blocks of cell organization by estimating network motifs using graph isomorphism network
 
 **TrimNN**： a neural network that efficiently estimates complex cell network motifs, aids in understanding cell organization's role in biology
 
