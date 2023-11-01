@@ -13,12 +13,11 @@
 * pandas
 * scipy
 * tensorboardX
+* argparse
 * python-igraph == 0.9.6
 * torch >= 1.13.1
 * dgl == 1.1.2
 
-## Data Generation
-The dataset in this paper is available at 
 
 ## Model Training and Evaluation
 To get the model in the paper, just run
