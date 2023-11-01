@@ -27,3 +27,9 @@ python enumerate_size3.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodet
 python enumerate_size4-1.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size4-1.csv
 python enumerate_size4-2.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size4-2.csv
 ```
+
+#### Command Line Arguments:
+*	-k k-hop
+*	-graph  file path for triangulated graph
+*	-nodetype number of node types
+*	-outpath file path for output result
