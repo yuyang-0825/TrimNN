@@ -1,12 +1,10 @@
-# Exploring building blocks of cell organization by estimating network motifs using graph isomorphism network
-
-**TrimNN**： a neural network that efficiently estimates complex cell network motifs, aids in understanding cell organization's role in biology
+# A bottom-up strategy to explore sizable cellular community motifs as building blocks of multicellular organization using TrimNN
 
 <p align="center">
   <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/TrimNN.png"/>
 </p>
 
-
+**Triangulation cellular community Motif Neural Network (TrimNN)**, an empowered bottom-up approach designed to estimate the prevalence of sizeable CC motifs in a triangulated cell graph.
 
 ## Python package Dependencies
 * tqdm
