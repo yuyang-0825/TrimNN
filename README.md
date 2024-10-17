@@ -1,7 +1,7 @@
 # A bottom-up strategy to explore sizable cellular community motifs as building blocks of multicellular organization using TrimNN
 
 <p align="center">
-  <img height="500" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/Figure1.png"/>
+  <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/Figure.png"/>
 </p>
 
 **Triangulation cellular community Motif Neural Network (TrimNN)**, an empowered bottom-up approach designed to estimate the prevalence of sizeable CC motifs in a triangulated cell graph. Spatially resolved transcriptomics, e.g., STARmap PLUS and 10X Xenium, and spatial proteomics data, e.g., MIBI-TOF and CODEX, are used as input to generate corresponding cellular community. After process of subgraph matching and pattern growth, TrimNN estimates different Size-K overrepresented CC motifs. These CC motifs can be biologically interpreted in the downstream analysis, including statistical summarization, cellular level interpretation within cell-cell communication analysis, gene level interpretation within differentially expressed gene analysis, e.g., GO enrichment analysis and pathway enrichment analysis, and phenotypical analysis within the availability of phenotypical information, e.g., survival curve and supervised analysis. 
