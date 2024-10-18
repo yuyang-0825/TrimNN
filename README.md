@@ -8,26 +8,40 @@
 **Triangulation cellular community Motif Neural Network (TrimNN)**, an empowered bottom-up approach designed to estimate the prevalence of sizeable CC motifs in a triangulated cell graph. Spatially resolved transcriptomics, e.g., STARmap PLUS and 10X Xenium, and spatial proteomics data, e.g., MIBI-TOF and CODEX, are used as input to generate corresponding cellular community. After process of subgraph matching and pattern growth, TrimNN estimates different Size-K overrepresented CC motifs. These CC motifs can be biologically interpreted in the downstream analysis, including statistical summarization, cellular level interpretation within cell-cell communication analysis, gene level interpretation within differentially expressed gene analysis, e.g., GO enrichment analysis and pathway enrichment analysis, and phenotypical analysis within the availability of phenotypical information, e.g., survival curve and supervised analysis. 
 
 
-## Python package Dependencies
-* tqdm
-* numpy
-* pandas
-* scipy
-* tensorboardX
-* argparse
-* python-igraph == 0.9.6
-* torch >= 1.13.1
-* dgl == 1.1.2
+## System Requirements
+#### Python Dependencies
+``` 
+ tqdm
+ numpy
+ pandas
+ scipy
+ tensorboardX
+ argparse
+ python-igraph == 0.9.6
+ torch >= 1.13.1
+ dgl == 1.1.2
+```
+
+### Install TrimNN from GitHub
+```
+git clone https://yuyang-0825/TrimNN
+cd TrimNN
+```
+## Data Preparation
+### Input Spatial Omics Data
+A spatial omics data should include x,y coordinates and cell types to generate cellular community graph. It is used for generating corresponding size-k overrepresented cc motifs. [[example]]((https://github.com/yuyang-0825/TrimNN/blob/main/spatial_data/demo_data.csv))
 
 
-## Identify top overrepresented network motifs
+## Demo
+
+### Identify top overrepresented network motifs
 To identify the size-3 overrepresented network motifs in the triangulated graph, run:
 ```
 cd src
 python enumerate_size3.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size-3.csv
 ```
 
-#### Command Line Arguments:
+##### Command Line Arguments:
 *	-k k-hop
 *	-graph  file path for triangulated graph
 *	-nodetype number of node types
