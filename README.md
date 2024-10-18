@@ -28,18 +28,29 @@ git clone https://yuyang-0825/TrimNN
 cd TrimNN
 ```
 ## Data Preparation
-### Input Spatial Omics Data
-A spatial omics data should include x,y coordinates and cell types to generate cellular community graph. It is used for generating corresponding size-k overrepresented CC motifs. [[example]](https://github.com/yuyang-0825/TrimNN/blob/main/spatial_data/demo_data.csv)
 
-Generate gml file from your input csv file as TrimNN's input.
+### Input Spatial Omics Data
+A spatial omics data should include ```x```, ```y```(coordinates) and ```cell_type```  columns to generate a cellular community graph. [[example]](https://github.com/yuyang-0825/TrimNN/blob/main/spatial_data/demo_data.csv)
+
+Generate gml file from your input CSV file as TrimNN's input.
 ```
 cd src 
 python csv2gml.py --path spatial_data/demo_data.csv
 ```
+* --path: The path of input data.
+* The gml file with the same name will appear in the same folder.
 
+### Input Specific CC motif (optional)
+If you want to test the Subgraph Matching function, input specific motif information, including ```size``` and ```cell types```
+```
+cd src 
+python csv2gml.py --size 3 --celltypes CTX-Ex,CTX-Ex,CTX-Ex
+```
+
+ 
 ## Demo
 
-### Identify top overrepresented network motifs
+### Function 1: Identify top overrepresented network motifs
 To identify the size-3 overrepresented network motifs in the triangulated graph, run:
 ```
 cd src
