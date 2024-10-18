@@ -1,4 +1,5 @@
 # A bottom-up strategy to explore sizable cellular community motifs as building blocks of multicellular organization using TrimNN
+<img src="https://img.shields.io/badge/TrimNN-v1.0.0-blue"> <img src="https://img.shields.io/badge/Platform-Linux-blue"> <img src="https://img.shields.io/badge/Language-python3-blue"> <img src="https://img.shields.io/badge/License-MIT-blue">
 
 <p align="center">
   <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/Figure.png"/>
