@@ -29,8 +29,13 @@ cd TrimNN
 ```
 ## Data Preparation
 ### Input Spatial Omics Data
-A spatial omics data should include x,y coordinates and cell types to generate cellular community graph. It is used for generating corresponding size-k overrepresented cc motifs. [[example]]((https://github.com/yuyang-0825/TrimNN/blob/main/spatial_data/demo_data.csv))
+A spatial omics data should include x,y coordinates and cell types to generate cellular community graph. It is used for generating corresponding size-k overrepresented CC motifs. [[example]](https://github.com/yuyang-0825/TrimNN/blob/main/spatial_data/demo_data.csv)
 
+Generate gml file from your input csv file as TrimNN's input.
+```
+cd src 
+python csv2gml.py --path spatial_data/demo_data.csv
+```
 
 ## Demo
 
