@@ -40,13 +40,6 @@ python csv2gml.py --path spatial_data/demo_data.csv
 * --path: The path of input data.
 * The gml file with the same name will appear in the same folder.
 
-### Input Specific CC motif (optional)
-If you want to test the Subgraph Matching function, input specific motif information, including ```size``` and ```cell types```
-```
-cd src 
-python csv2gml.py --size 3 --celltypes CTX-Ex,CTX-Ex,CTX-Ex
-```
-
  
 ## Demo
 
