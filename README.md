@@ -43,27 +43,28 @@ python csv2gml.py --path spatial_data/demo_data.csv
  
 ## Demo
 
-### Function 1: Identify top overrepresented network motifs
-To identify the size-3 overrepresented network motifs in the triangulated graph, run:
+### Function 1: Identify specific size top overrepresented CC motif
+To identify the specific size top overrepresented CC motif in the cellular community graph, run:
 ```
 cd src
-python enumerate_size3.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size-3.csv
+python specific_size.py -size 3 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/size-3.csv
 ```
-
 ##### Command Line Arguments:
-*	-k k-hop
-*	-graph  file path for triangulated graph
-*	-nodetype number of node types
-*	-outpath file path for output result
+*	-size specific size of CC motif (from 3 to 9).
+*	-k k-hop.
+*	-graph  file path for input cellular community graph.
+*	-celltype number of cell types.
+*	-outpath file path for output result.
 
-If you want to get the results of the other two size-4 subgraphs， run:
+### Function 2: Identify all top overrepresented CC motifs
+To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
 cd src
-python enumerate_size4-1.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size4-1.csv
+python all_size.py -size 5 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/CCMotifs.csv
 ```
-and
-```
-cd src
-python enumerate_size4-2.py -k 1 -graph ../graph/8/G_N64_triangle_NL8_0.gml -nodetype 8 -outpath size4-2.csv
-```
-Each size-4 result generation takes roughly 2 hours to run on an NVIDIA A100 GPU.
+##### Command Line Arguments:
+*	-size The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
+*	-k k-hop.
+*	-graph  file path for input cellular community graph.
+*	-celltype number of cell types.
+*	-outpath file path for output result.
