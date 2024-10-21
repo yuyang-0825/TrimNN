@@ -3,42 +3,56 @@ import numpy as np
 from scipy.spatial import Delaunay
 from igraph import Graph
 import os
+import argparse
 
-current_file_path = os.path.abspath(__file__)
+def parse_args():
+    parser = argparse.ArgumentParser(description='Transfer input to gml file')
+    parser.add_argument('--path', type=str, default='spatial_data/demo_data.csv',
+                        help='The path of input data')
+    args = parser.parse_args()
+    return args
 
-parent_directory = os.path.dirname(current_file_path)
+if __name__ == '__main__':
+    args = parse_args()
+    input_path = args.path
+    input_folder = input_path.split('/')[0]
+    input_name = input_path.split('/')[1]
 
-data_directory = os.path.join(parent_directory, '..', 'spatial_data')
+    current_file_path = os.path.abspath(__file__)
 
-file_path = os.path.join(data_directory, 'demo_data.csv')
+    parent_directory = os.path.dirname(current_file_path)
 
-df=pd.read_csv(file_path)
-unqiue_cell_type = sorted(df['cell_type'].unique())
+    data_directory = os.path.join(parent_directory, '..', input_folder)
+
+    file_path = os.path.join(data_directory, input_name)
+
+    df=pd.read_csv(file_path)
+    unqiue_cell_type = sorted(df['cell_type'].unique())
 
 
 
-points = np.stack((df['X'],df['Y']),axis=-1)
-tri = Delaunay(points)
+    points = np.stack((df['X'],df['Y']),axis=-1)
+    tri = Delaunay(points)
 
-adjmatrix = np.zeros((points.shape[0], points.shape[0]))
-for triangle in tri.simplices:
-    adjmatrix[triangle[0], triangle[1]] = 1
-    adjmatrix[triangle[1], triangle[0]] = 1
-    adjmatrix[triangle[0], triangle[2]] = 1
-    adjmatrix[triangle[2], triangle[0]] = 1
-    adjmatrix[triangle[1], triangle[2]] = 1
-    adjmatrix[triangle[2], triangle[1]] = 1
+    adjmatrix = np.zeros((points.shape[0], points.shape[0]))
+    for triangle in tri.simplices:
+        adjmatrix[triangle[0], triangle[1]] = 1
+        adjmatrix[triangle[1], triangle[0]] = 1
+        adjmatrix[triangle[0], triangle[2]] = 1
+        adjmatrix[triangle[2], triangle[0]] = 1
+        adjmatrix[triangle[1], triangle[2]] = 1
+        adjmatrix[triangle[2], triangle[1]] = 1
 
-# generate igraph according to adj matrix
-graph = Graph.Adjacency(adjmatrix, mode='undirected')
+    # generate igraph according to adj matrix
+    graph = Graph.Adjacency(adjmatrix, mode='undirected')
 
-cell_types = df['cell_type']
+    cell_types = df['cell_type']
 
-label_to_int = {label: idx for idx, label in enumerate(unqiue_cell_type)}
-label = [label_to_int[cell_type] for cell_type in cell_types]
+    label_to_int = {label: idx for idx, label in enumerate(unqiue_cell_type)}
+    label = [label_to_int[cell_type] for cell_type in cell_types]
 
-graph.vs["label"] = label
-graph.es["label"] = 0
+    graph.vs["label"] = label
+    graph.es["label"] = 0
 
-graph.write( os.path.join(data_directory, 'demo_data.gml'))
+    graph.write(os.path.join(data_directory, input_name.split('.')[0] + '.gml') )
 
