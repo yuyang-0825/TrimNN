@@ -9,17 +9,9 @@
 
 
 ## System Requirements
-#### Python Dependencies
+#### Install  Dependencies
 ``` 
- tqdm
- numpy
- pandas
- scipy
- tensorboardX
- argparse
- python-igraph == 0.9.6
- torch >= 1.13.1
- dgl == 1.1.2
+ pip install -r requirements.txt
 ```
 
 ### Install TrimNN from GitHub
@@ -47,24 +39,24 @@ python csv2gml.py --path spatial_data/demo_data.csv
 To identify the specific size top overrepresented CC motif in the cellular community graph, run:
 ```
 cd src
-python specific_size.py -size 3 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/size-3.csv
+python specific_size.py -size 3 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
-*	-size specific size of CC motif (from 3 to 9).
-*	-k k-hop.
-*	-graph  file path for input cellular community graph.
-*	-celltype number of cell types.
-*	-outpath file path for output result.
+*	-size: specific size of CC motif (from 3 to 9).
+*	-k: k-hop.
+*	-graph: file path for input cellular community graph.
+*	-celltype: number of cell types.
+*	-outpath: folder path for output result.
 
 ### Function 2: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
 cd src
-python all_size.py -size 5 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/CCMotifs.csv
+python all_size.py -size 5 -k 2 -graph ../spatial_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
-*	-size The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
-*	-k k-hop.
-*	-graph  file path for input cellular community graph.
-*	-celltype number of cell types.
-*	-outpath file path for output result.
+*	-size: The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
+*	-k: k-hop.
+*	-graph: file path for input cellular community graph.
+*	-celltype: number of cell types.
+*	-outpath: folder path for output result.
