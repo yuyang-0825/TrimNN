@@ -38,7 +38,6 @@ python csv2gml.py --path spatial_data/demo_data.csv
 ### Function 1: Identify specific size top overrepresented CC motif
 To identify the specific size top overrepresented CC motif in the cellular community graph, run:
 ```
-cd src
 python specific_size.py -size 3 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
@@ -51,7 +50,6 @@ python specific_size.py -size 3 -k 2 -graph spatial_data/demo_data.gml -celltype
 ### Function 2: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
-cd src
 python all_size.py -size 5 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
