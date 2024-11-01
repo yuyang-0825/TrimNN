@@ -16,7 +16,7 @@ import warnings
 import itertools
 from collections import OrderedDict
 from torch.utils.data import DataLoader
-
+import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, EdgeSeqDataset, GraphAdjDataset
@@ -235,7 +235,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
     # for labels in left_tuple:
     best_pattern_num = 0
     best_pattern = initial_pattern.copy()
-    for pattern in pattern_list:
+    for pattern in tqdm(pattern_list, desc="Enumrateing CC motifs"):
 
         pattern_pred = 0
 
@@ -274,173 +274,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
         #     writer.writerow([pattern.vs["label"], pattern_pred])
 
 
-# def enumerate_triangle(graph_path,model_path,result_path,labelnum,k):
-#     initial_pattern = Graph(n=3, edges=[[0, 1], [0, 2], [1, 2]])
-#     celltype = list(range(0, labelnum))
-#     combinations = list(itertools.combinations_with_replacement(celltype, 3))
-#
-#     # graph_names = os.listdir(graph_path)
-#
-#     for labels in combinations:
-#         initial_pattern.vs["label"] = labels
-#         initial_pattern.es["label"] = 0
-#         initial_pattern["type"] = labels
-#         pattern_pred = 0
-#
-#         # for graph_name in graph_names:
-#         data = load_data(graph_path, initial_pattern)
-#         data_loaders = OrderedDict({"train": None, "dev": None, "test": None})
-#         for data_type, x in data.items():
-#             dataset = GraphAdjDataset(x, k)
-#             dataset = get_PE(dataset)
-#
-#         sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
-#                           shuffle=data_type == "train", drop_last=False)
-#         data_loader = DataLoader(dataset,
-#                                  batch_sampler=sampler,
-#                                  collate_fn=GraphAdjDataset.batchify,
-#                                  pin_memory=data_type == "train")
-#
-#         data_loaders[data_type] = data_loader
-#         device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
-#         model = RGIN(config)
-#         model.load_state_dict(torch.load(model_path))
-#         model = model.to(device)
-#         evaluate_results = evaluate(model, data_type, data_loader, device, config)
-#         pred_exist = evaluate_results["data"]["pred_exist"]
-#
-#         pattern_pred += pred_exist
-#
-#         with open(result_path, mode='a', newline='') as file:
-#             writer = csv.writer(file)
-#             writer.writerow([labels, pattern_pred])
-#
-#
-# def enumerate_4order(graph_path, model_path, result_path, labelnum,k):
-#     initial_pattern = Graph(n=4, edges=[[0, 1], [0, 2], [1, 2], [1, 3],[2, 3]])
-#
-#
-#     graph_names = os.listdir(graph_path)
-#
-#     pattern_list = patternlist(initial_pattern,labelnum)
-#     # for labels in left_tuple:
-#     for pattern in  pattern_list:
-#
-#         pattern_pred = 0
-#
-#         for graph_name in graph_names:
-#             data = load_data(graph_path+graph_name, pattern)
-#             data_loaders = OrderedDict({"train": None, "dev": None, "test": None})
-#             for data_type, x in data.items():
-#                 dataset = GraphAdjDataset(x, k)
-#                 dataset = get_PE(dataset)
-#
-#             sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
-#                               shuffle=data_type == "train", drop_last=False)
-#             data_loader = DataLoader(dataset,
-#                                      batch_sampler=sampler,
-#                                      collate_fn=GraphAdjDataset.batchify,
-#                                      pin_memory=data_type == "train")
-#
-#             data_loaders[data_type] = data_loader
-#             device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
-#             model = RGIN(config)
-#             model.load_state_dict(torch.load(model_path))
-#             model = model.to(device)
-#             evaluate_results = evaluate(model, data_type, data_loader, device, config)
-#             pred_exist = evaluate_results["data"]["pred_exist"]
-#
-#             pattern_pred += pred_exist
-#
-#         with open(result_path, mode='a', newline='') as file:
-#             writer = csv.writer(file)
-#             writer.writerow([pattern.vs["label"], pattern_pred])
-#
-# def enumerate_5order(graph_path, model_path, result_path, labelnum,k):
-#     initial_pattern = Graph(n=5, edges=[[0, 1], [0, 2], [1, 2], [0, 3], [0, 4], [3, 4]])
-#
-#
-#     graph_names = os.listdir(graph_path)
-#
-#     pattern_list = patternlist(initial_pattern,labelnum)
-#     # for labels in left_tuple:
-#     for pattern in  pattern_list:
-#         # initial_pattern.vs["label"] = labels
-#         # initial_pattern.es["label"] = 0
-#         # initial_pattern["type"] = labels
-#
-#         pattern_pred = 0
-#
-#         for graph_name in graph_names:
-#             data = load_data(graph_path+graph_name, pattern)
-#             data_loaders = OrderedDict({"train": None, "dev": None, "test": None})
-#             for data_type, x in data.items():
-#                 dataset = GraphAdjDataset(x, k)
-#                 dataset = get_PE(dataset)
-#
-#             sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
-#                               shuffle=data_type == "train", drop_last=False)
-#             data_loader = DataLoader(dataset,
-#                                      batch_sampler=sampler,
-#                                      collate_fn=GraphAdjDataset.batchify,
-#                                      pin_memory=data_type == "train")
-#
-#             data_loaders[data_type] = data_loader
-#             device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
-#             model = RGIN(config)
-#             model.load_state_dict(torch.load(model_path))
-#             model = model.to(device)
-#             evaluate_results = evaluate(model, data_type, data_loader, device, config)
-#             pred_exist = evaluate_results["data"]["pred_exist"]
-#
-#             pattern_pred += pred_exist
-#
-#         with open(result_path, mode='a', newline='') as file:
-#             writer = csv.writer(file)
-#             writer.writerow([pattern.vs["label"], pattern_pred])
-#
-# def enumerate_6order(graph_path, model_path, result_path, labelnum,k):
-#     initial_pattern = Graph(n=6, edges=[[0, 1], [0, 2], [1,2],[2,3],[2,4],[3,4],[4,5],[3,5]])
-#
-#
-#     graph_names = os.listdir(graph_path)
-#
-#     pattern_list = patternlist(initial_pattern,labelnum)
-#     # for labels in left_tuple:
-#     for pattern in  pattern_list:
-#         # initial_pattern.vs["label"] = labels
-#         # initial_pattern.es["label"] = 0
-#         # initial_pattern["type"] = labels
-#
-#         pattern_pred = 0
-#
-#         for graph_name in graph_names:
-#             data = load_data(graph_path+graph_name, pattern)
-#             data_loaders = OrderedDict({"train": None, "dev": None, "test": None})
-#             for data_type, x in data.items():
-#                 dataset = GraphAdjDataset(x, k)
-#                 dataset = get_PE(dataset)
-#
-#             sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
-#                               shuffle=data_type == "train", drop_last=False)
-#             data_loader = DataLoader(dataset,
-#                                      batch_sampler=sampler,
-#                                      collate_fn=GraphAdjDataset.batchify,
-#                                      pin_memory=data_type == "train")
-#
-#             data_loaders[data_type] = data_loader
-#             device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
-#             model = RGIN(config)
-#             model.load_state_dict(torch.load(model_path))
-#             model = model.to(device)
-#             evaluate_results = evaluate(model, data_type, data_loader, device, config)
-#             pred_exist = evaluate_results["data"]["pred_exist"]
-#
-#             pattern_pred += pred_exist
-#
-#         with open(result_path, mode='a', newline='') as file:
-#             writer = csv.writer(file)
-#             writer.writerow([pattern.vs["label"], pattern_pred])
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Identify specific size top overrepresented CC motif')
     parser.add_argument('-size', type=int, default=4,
