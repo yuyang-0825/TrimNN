@@ -37,7 +37,7 @@ config = {
 
     "base": 2,
 
-    "gpu_id": 0,
+    "gpu_id": -1,
     "num_workers": 12,
 
     "epochs": 100,
@@ -254,9 +254,10 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
                                  pin_memory=data_type == "train")
 
         data_loaders[data_type] = data_loader
-        device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
+        # device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = RGIN(config)
-        model.load_state_dict(torch.load(model_path))
+        model.load_state_dict(torch.load(model_path, map_location=device))
         model = model.to(device)
         evaluate_results = evaluate(model, data_type, data_loader, device, config)
         pred_exist = evaluate_results["data"]["pred_exist"]
@@ -269,15 +270,10 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
 
     best_pattern.write(os.path.join(result_path,"size_"+str(size)+'.gml'), format='gml')
 
-        # with open(result_path, mode='a', newline='') as file:
-        #     writer = csv.writer(file)
-        #     writer.writerow([pattern.vs["label"], pattern_pred])
-
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Identify specific size top overrepresented CC motif')
-    parser.add_argument('-size', type=int, default=4,
+    parser.add_argument('-size', type=int, default=3,
                         help='specific size of CC motif (from 3 to 9)')
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
