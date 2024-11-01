@@ -18,7 +18,7 @@ from collections import OrderedDict
 from torch.utils.data import DataLoader
 
 import pandas as pd
-
+import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, GraphAdjDataset
@@ -240,7 +240,7 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
 
     max_occur = 0
     max_pattern = initial_pattern.copy()
-    for labels in combinations:
+    for labels in tqdm(combinations, desc="Enumrateing size-3 CC motifs"):
         print(labels)
         initial_pattern.vs["label"] = labels
         initial_pattern.es["label"] = 0
@@ -336,7 +336,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
         result = pd.DataFrame(columns=['graph','label', 'pattern_pred'])
         new_patternlist = generate_patterns_with_new_node(best_pattern,graph_path,labelnum)
 
-        for new_pattern in new_patternlist:
+        for new_pattern in tqdm(new_patternlist, desc="Searching CC motifs"):
             data = load_data(graph_path, new_pattern)
             data_loaders = OrderedDict({"train": None, "dev": None, "test": None})
             for data_type, x in data.items():
