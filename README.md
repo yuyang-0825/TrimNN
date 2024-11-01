@@ -9,13 +9,12 @@
 
 
 ## System Requirements
-### Install  Dependencies
-``` 
- pip install -r requirements.txt
-```
 
-### Install TrimNN from GitHub
+### Install TrimNN 
 ```
+conda create -n TrimNN python=3.9 
+conda activate TrimNN 
+pip install TrimNN==0.0.1 
 git clone https://yuyang-0825/TrimNN
 cd TrimNN
 ```
@@ -26,7 +25,6 @@ A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_ty
 
 Generate gml file from your input CSV file as TrimNN's input.
 ```
-cd src 
 python csv2gml.py --path spatial_data/demo_data.csv
 ```
 * --path: The path of input data.
