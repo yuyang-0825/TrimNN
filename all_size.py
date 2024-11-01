@@ -18,7 +18,7 @@ from collections import OrderedDict
 from torch.utils.data import DataLoader
 
 import pandas as pd
-import tqdm
+from tqdm import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, GraphAdjDataset
