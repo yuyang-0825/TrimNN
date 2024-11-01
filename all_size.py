@@ -18,7 +18,7 @@ from collections import OrderedDict
 from torch.utils.data import DataLoader
 
 import pandas as pd
-from tqdm import tqdm
+import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, GraphAdjDataset
@@ -262,9 +262,9 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
                                  pin_memory=data_type == "train")
 
         data_loaders[data_type] = data_loader
-        device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = RGIN(config)
-        model.load_state_dict(torch.load(model_path))
+        model.load_state_dict(torch.load(model_path, map_location=device))
         model = model.to(device)
         evaluate_results = evaluate(model, data_type, data_loader, device, config)
         pred_exist = evaluate_results["data"]["pred_exist"]
@@ -351,9 +351,9 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
                                      pin_memory=data_type == "train")
 
             data_loaders[data_type] = data_loader
-            device = torch.device("cuda:%d" % config["gpu_id"] if config["gpu_id"] != -1 else "cpu")
+            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             model = RGIN(config)
-            model.load_state_dict(torch.load(model_path))
+            model.load_state_dict(torch.load(model_path, map_location=device))
             model = model.to(device)
             evaluate_results = evaluate(model, data_type, data_loader, device, config)
             pattern_pred = evaluate_results["data"]["pred_exist"]
