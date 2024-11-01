@@ -241,7 +241,6 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
     max_occur = 0
     max_pattern = initial_pattern.copy()
     for labels in tqdm(combinations, desc="Enumrateing size-3 CC motifs"):
-        print(labels)
         initial_pattern.vs["label"] = labels
         initial_pattern.es["label"] = 0
         initial_pattern["type"] = labels
