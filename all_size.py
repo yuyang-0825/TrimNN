@@ -323,7 +323,7 @@ def generate_patterns_with_new_node(best_pattern,graph_path,labelnum):
 def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
 
     triangle_pattern = enumerate_triangle(graph_path,model_path,labelnum,k)
-    triangle_pattern.write(os.path.join(result_path,"best_size3.gml"), format='gml')
+    triangle_pattern.write(os.path.join(result_path,"Best_size3.gml"), format='gml')
 
     now_size = triangle_pattern.vcount()
     best_pattern = triangle_pattern
@@ -363,7 +363,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
                 best_pattern_num = pattern_pred
 
         now_size+=1
-        best_pattern.write(os.path.join(result_path,"best_size" + str(now_size) + ".gml"), format='gml')
+        best_pattern.write(os.path.join(result_path,"Best_size" + str(now_size) + ".gml"), format='gml')
         # max_value = result['pattern_pred'].max()
         # result.to_csv("results_2hop/CMM2_replicate2_disease_"+str(now_size) + "size_test.csv", index=False)
         # print(max_value)
