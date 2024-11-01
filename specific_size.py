@@ -16,7 +16,7 @@ import warnings
 import itertools
 from collections import OrderedDict
 from torch.utils.data import DataLoader
-import tqdm
+from tqdm import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, EdgeSeqDataset, GraphAdjDataset
@@ -281,7 +281,7 @@ def parse_args():
                         help='specific size of CC motif (from 3 to 9)')
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
-    parser.add_argument('-graph', type=str, default='../spatial_data/demo_data.gml',
+    parser.add_argument('-graph', type=str, default='spatial_data/demo_data.gml',
                         help='k-hop')
     parser.add_argument('-celltype', type=int, default=8,
                         help='number of cell types')
