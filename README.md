@@ -1,12 +1,14 @@
-# A bottom-up strategy to explore sizable cellular community motifs as building blocks of multicellular organization using TrimNN
+# TrimNN: Cellular community motif modeling for multicellular organization in complex tissues
+
 <img src="https://img.shields.io/badge/TrimNN-v0.0.1-blue"> <img src="https://img.shields.io/badge/Platform-Linux-blue"> <img src="https://img.shields.io/badge/Language-python3-blue"> <img src="https://img.shields.io/badge/License-MIT-blue">
 
 <p align="center">
   <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/Figure.png"/>
 </p>
 
-**Triangulation cellular community Motif Neural Network (TrimNN)**, an empowered bottom-up approach designed to estimate the prevalence of sizeable CC motifs in a triangulated cell graph. Spatially resolved transcriptomics, e.g., STARmap PLUS and 10X Xenium, and spatial proteomics data, e.g., MIBI-TOF and CODEX, are used as input to generate corresponding cellular community. After process of subgraph matching and pattern growth, TrimNN estimates different Size-K overrepresented CC motifs. These CC motifs can be biologically interpreted in the downstream analysis, including statistical summarization, cellular level interpretation within cell-cell communication analysis, gene level interpretation within differentially expressed gene analysis, e.g., GO enrichment analysis and pathway enrichment analysis, and phenotypical analysis within the availability of phenotypical information, e.g., survival curve and supervised analysis. 
+**Tri**angulation cellular community **m**otif **N**eural **N**etwork (**TrimNN**), a bottom-up approach to estimate the prevalence of sizeable conservative cell organization patterns as Cellular Community motifs (CC motifs) in spatial omics.
 
+This empowered graph isomorphism network-based framework adopts inductive bias in cellular communities and focuses on estimating the relative abundance in the triangulated space. Beyond clusters of cell type composition from classical top-down multicellular neighborhood analysis, this method differentiates cellular niches as countable building blocks in recurring interconnections of various types, presenting interpretability and generalizability in cellular neighborhood analysis. In colorectal cancer and neurodegenerative disease studies using spatial proteomics and spatial transcriptomics, various sizes of CC motifs reveal diverse relations between micro-molecular spatially distributed cell types and macro phenotypical biological functions. Notably, orthologous to gene biomarkers, the identified spatial CC motifs differentiate patient survivals in colorectal cancer studies, which cannot be inferred by other existing tools. 
 
 ## System Requirements
 
