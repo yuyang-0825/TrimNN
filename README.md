@@ -10,14 +10,18 @@
 
 ## System Requirements
 
-### Install TrimNN 
+### Install TrimNN from Github
 ```
-conda create -n TrimNN python=3.9 
-conda activate TrimNN 
-pip install TrimNN==0.0.1 
 git clone https://yuyang-0825/TrimNN
 cd TrimNN
 ```
+### Create virtual environment and install dependencies
+```
+conda create -n TrimNN python=3.9 
+conda activate TrimNN 
+pip install -r requirements.txt
+```
+
 ## Data Preparation
 
 ### Input Spatial Omics Data
