@@ -14,7 +14,7 @@ This empowered graph isomorphism network-based framework adopts inductive bias i
 
 ### Install TrimNN from Github
 ```
-git clone https://yuyang-0825/TrimNN
+git clone https://github.com/yuyang-0825/TrimNN
 cd TrimNN
 ```
 ### Create virtual environment and install dependencies
