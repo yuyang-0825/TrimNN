@@ -19,8 +19,8 @@ cd TrimNN
 ```
 ### Create virtual environment and install dependencies
 ```
-conda create -n TrimNN python=3.9 
-conda activate TrimNN 
+conda create -n TrimNNEnv python=3.9 
+conda activate TrimNNEnv 
 pip install -r requirements.txt
 ```
 
