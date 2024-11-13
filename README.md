@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/TrimNN-v0.0.1-blue"> <img src="https://img.shields.io/badge/Platform-Linux-blue"> <img src="https://img.shields.io/badge/Language-python3-blue"> <img src="https://img.shields.io/badge/License-MIT-blue">
 
 <p align="center">
-  <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/figure/Figure.png"/>
+  <img height="450" width="750" src="https://github.com/yuyang-0825/TrimNN/blob/main/TrimNN.png"/>
 </p>
 
 **Tri**angulation cellular community **m**otif **N**eural **N**etwork (**TrimNN**), a bottom-up approach to estimate the prevalence of sizeable conservative cell organization patterns as Cellular Community motifs (CC motifs) in spatial omics.
