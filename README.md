@@ -18,9 +18,22 @@ git clone https://github.com/yuyang-0825/TrimNN
 cd TrimNN
 ```
 ### Create virtual environment and install dependencies
+
+#### Create virtual environment
 ```
 conda create -n TrimNNEnv python=3.9 
-conda activate TrimNNEnv 
+conda activate TrimNNEnv
+```
+#### Install Pytorch (Linux with CUDA)
+```
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
+```
+#### Install dgl (Linux with CUDA)
+```
+pip install dgl==1.1.2+cu116 -f https://data.dgl.ai/wheels/cu116/repo.html
+```
+#### Install Other dependencies
+```
 pip install -r requirements.txt
 ```
 
@@ -54,7 +67,7 @@ python specific_size.py -size 3 -k 2 -graph spatial_data/demo_data.gml -celltype
 ### Function 2: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
-python all_size.py -size 5 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
+python all_size.py -size 4 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
 *	-size: The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
