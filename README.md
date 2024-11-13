@@ -44,7 +44,7 @@ A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_ty
 
 Generate gml file from your input CSV file as TrimNN's input.
 ```
-python csv2gml.py --path spatial_data/demo_data.csv
+python csv2gml.py --path demo_data/demo_data.csv
 ```
 * --path: The path of input data.
 * The gml file with the same name will appear in the same folder.
@@ -55,7 +55,7 @@ python csv2gml.py --path spatial_data/demo_data.csv
 ### Function 1: Identify specific size top overrepresented CC motif
 To identify the specific size top overrepresented CC motif in the cellular community graph, run:
 ```
-python specific_size.py -size 3 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
+python specific_size.py -size 3 -k 2 -graph demo_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
 *	-size: specific size of CC motif (from 3 to 9).
@@ -67,7 +67,7 @@ python specific_size.py -size 3 -k 2 -graph spatial_data/demo_data.gml -celltype
 ### Function 2: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
-python all_size.py -size 4 -k 2 -graph spatial_data/demo_data.gml -celltype 8 -outpath result/
+python all_size.py -size 4 -k 2 -graph demo_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
 *	-size: The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
