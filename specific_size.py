@@ -268,7 +268,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
             best_pattern = pattern
             best_pattern_num = pattern_pred
 
-    best_pattern.write(os.path.join(result_path,"Best_size_"+str(size)+'.gml'), format='gml')
+    best_pattern.write(os.path.join(result_path,"Best_size"+str(size)+'.gml'), format='gml')
 
 
 def parse_args():
