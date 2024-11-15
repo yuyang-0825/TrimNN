@@ -235,7 +235,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
     # for labels in left_tuple:
     best_pattern_num = 0
     best_pattern = initial_pattern.copy()
-    for pattern in tqdm(pattern_list, desc="Enumrateing CC motifs"):
+    for pattern in tqdm(pattern_list, desc="Enumrating CC motifs"):
 
         pattern_pred = 0
 
