@@ -25,7 +25,7 @@ conda create -n TrimNNEnv python=3.9
 conda activate TrimNNEnv
 ```
 #### Install Pytorch and DGL 
-**Linux with CUDA**
+* **Linux with CUDA**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
