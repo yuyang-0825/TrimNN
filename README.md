@@ -11,6 +11,7 @@
 This empowered graph isomorphism network-based framework adopts inductive bias in cellular communities and focuses on estimating the relative abundance in the triangulated space. Beyond clusters of cell type composition from classical top-down multicellular neighborhood analysis, this method differentiates cellular niches as countable building blocks in recurring interconnections of various types, presenting interpretability and generalizability in cellular neighborhood analysis. In colorectal cancer and neurodegenerative disease studies using spatial proteomics and spatial transcriptomics, various sizes of CC motifs reveal diverse relations between micro-molecular spatially distributed cell types and macro phenotypical biological functions. Notably, orthologous to gene biomarkers, the identified spatial CC motifs differentiate patient survivals in colorectal cancer studies, which cannot be inferred by other existing tools. 
 
 ## System Requirements
+Tested on Red Hat Enterprise Linux 7.9
 
 ### Install TrimNN from Github
 ```
