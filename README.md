@@ -29,15 +29,11 @@ conda activate TrimNNEnv
 * **Linux with CUDA**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
-```
-```
 pip install dgl==1.1.2+cu116 -f https://data.dgl.ai/wheels/cu116/repo.html
 ```
 * **Linux with cpu only**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 cpuonly -c pytorch
-```
-```
 pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 #### Install Other dependencies
