@@ -57,7 +57,7 @@ python csv2gml.py -graph demo_data/demo_data.csv
 * -graph: The path of input cellular community graph data.
 * The gml file with the same name will appear in the same folder.
 
-**Optional:** If you want to input a specific CC motif to test the "SubgraphMatching" function:
+**Optional:** If you want to input a specific CC motif to test the "Subgraph Matching" function:
 ```
 python csv2gml.py -graph demo_data/demo_data.csv --motif_size 3 --motif_label Micro&Micro&Micro
 ```
