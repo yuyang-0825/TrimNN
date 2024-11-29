@@ -68,6 +68,14 @@ python csv2gml.py -graph demo_data/demo_data.csv --motif_size 3 --motif_label Mi
  
 ## Demo
 ### Function 1: Subgraph Matching
+```
+python subgraph_matching.py -motif demo_data/size-3.gml -k 2 -graph demo_data/demo_data.gml -outpath result/
+```
+##### Command Line Arguments:
+*	-motif: file path for input CC motif.
+*	-k: k-hop.
+*	-graph: file path for input cellular community graph.
+*	-outpath: folder path for output result.
 
 
 ### Function 2: Identify specific size top overrepresented CC motif
