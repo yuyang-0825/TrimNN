@@ -29,11 +29,15 @@ conda activate TrimNNEnv
 * **Linux with CUDA**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
+```
+```
 pip install dgl==1.1.2+cu116 -f https://data.dgl.ai/wheels/cu116/repo.html
 ```
 * **Linux with cpu only**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 cpuonly -c pytorch
+```
+```
 pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 #### Install Other dependencies
@@ -48,15 +52,25 @@ A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_ty
 
 Generate gml file from your input CSV file as TrimNN's input.
 ```
-python csv2gml.py --path demo_data/demo_data.csv
+python csv2gml.py -graph demo_data/demo_data.csv
 ```
-* --path: The path of input data.
+* -graph: The path of input cellular community graph data.
 * The gml file with the same name will appear in the same folder.
 
+**Optional:** If you want to input a specific CC motif to test the "SubgraphMatching" function:
+```
+python csv2gml.py -graph demo_data/demo_data.csv --motif_size 3 --motif_label Micro&Micro&Micro
+```
+* -graph: The path of input cellular community graph data.
+* --motif_size: The size of input motif
+* --motif_label: The cell type of input motif(combine with "&")
+* The gml files of graph and motif with the same name will appear in the same folder.
  
 ## Demo
+### Function 1: Subgraph Matching
 
-### Function 1: Identify specific size top overrepresented CC motif
+
+### Function 2: Identify specific size top overrepresented CC motif
 To identify the specific size top overrepresented CC motif in the cellular community graph, run:
 ```
 python specific_size.py -size 3 -k 2 -graph demo_data/demo_data.gml -celltype 8 -outpath result/
@@ -68,7 +82,7 @@ python specific_size.py -size 3 -k 2 -graph demo_data/demo_data.gml -celltype 8 
 *	-celltype: number of cell types.
 *	-outpath: folder path for output result.
 
-### Function 2: Identify all top overrepresented CC motifs
+### Function 3: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size5(default) in the cellular community graph, run:
 ```
 python all_size.py -size 4 -k 2 -graph demo_data/demo_data.gml -celltype 8 -outpath result/
