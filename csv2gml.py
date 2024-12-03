@@ -9,9 +9,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
     parser.add_argument('-graph', type=str, default='demo_data/demo_data.csv',
                         help='The path of input graph data')
-    parser.add_argument('--motif_size', type=int, default=3,
+    parser.add_argument('--motif_size', type=int,
                         help='The size of input motif')
-    parser.add_argument('--motif_label', type=str, default="Micro&Micro&Micro" ,help='The cell type of input motif(combine with "&")')
+    parser.add_argument('--motif_label', type=str,help='The cell type of input motif(combine with "&")')
     args = parser.parse_args()
     return args
 
