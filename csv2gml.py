@@ -7,7 +7,7 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
-    parser.add_argument('-graph', type=str, default='demo_data/demo_data.csv',
+    parser.add_argument('-target', type=str, default='demo_data/demo_data.csv',
                         help='The path of input graph data')
     parser.add_argument('--motif_size', type=int,
                         help='The size of input motif')
@@ -17,7 +17,7 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    input_path = args.graph
+    input_path = args.target
     input_folder = input_path.split('/')[0]
     input_name = input_path.split('/')[1]
 
