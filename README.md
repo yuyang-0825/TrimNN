@@ -59,11 +59,11 @@ python csv2gml.py -graph demo_data/demo_data.csv
 
 **Optional:** If you want to input a specific CC motif to test the "Subgraph Matching" function:
 ```
-python csv2gml.py -graph demo_data/demo_data.csv --motif_size 3 --motif_label Micro&Micro&Micro
+python csv2gml.py -graph demo_data/demo_data.csv --motif_size 3 --motif_label Micro_Micro_Micro
 ```
 * -graph: The path of input cellular community graph data.
 * --motif_size: The size of input motif
-* --motif_label: The cell type of input motif(combine with "&")
+* --motif_label: The cell type of input motif(combine with "_")
 * The gml files of graph and motif with the same name will appear in the same folder.
  
 ## Demo
