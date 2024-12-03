@@ -71,7 +71,7 @@ if __name__ == '__main__':
         elif motif_size == 9:
             motif = Graph(n=9, edges=[[0, 1], [0, 2], [1, 2], [2, 3], [2, 4], [3, 4], [3, 5], [3, 6], [6, 7],
                                                 [6, 8], [7, 8]])
-        motif_label = motif_label.split('&')
+        motif_label = motif_label.split('_')
         motif_label_int = [label_to_int[label] for label in motif_label]
         motif.vs["label"] = motif_label_int
         motif.es["label"] = 0
