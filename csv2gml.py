@@ -9,22 +9,26 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
     parser.add_argument('-target', type=str, default='demo_data/demo_data.csv',
                         help='The path of input graph data')
-    parser.add_argument('--motif_size', type=int,
+    parser.add_argument('-out', type=str, default='demo_data/demo_data.gml',
+                        help='The  output path of generated gml data')
+    parser.add_argument('-motif_size', type=int,
                         help='The size of input motif')
-    parser.add_argument('--motif_label', type=str,help='The cell type of input motif(combine with "&")')
+    parser.add_argument('-motif_label', type=str,help='The cell type of input motif(combine with "_")')
     args = parser.parse_args()
     return args
 
 if __name__ == '__main__':
     args = parse_args()
     input_path = args.target
+    out_path = args.out
+    out_folder = out_path.split('/')[0]
+    if not os.path.exists(out_folder):
+        os.makedirs(out_folder)
     input_folder = input_path.split('/')[0]
     input_name = input_path.split('/')[1]
 
     df=pd.read_csv(input_path)
     unqiue_cell_type = sorted(df['cell_type'].unique())
-
-
 
     points = np.stack((df['X'],df['Y']),axis=-1)
     tri = Delaunay(points)
@@ -49,7 +53,7 @@ if __name__ == '__main__':
     graph.vs["label"] = label
     graph.es["label"] = 0
 
-    graph.write(os.path.join(input_folder, input_name.split('.')[0] + '.gml') )
+    graph.write(out_path)
 
     if args.motif_size:
         motif_size = args.motif_size
@@ -76,6 +80,6 @@ if __name__ == '__main__':
         motif.vs["label"] = motif_label_int
         motif.es["label"] = 0
 
-        motif.write(os.path.join(input_folder, 'size-'+str(motif_size)+'.gml'))
+        motif.write(os.path.join(out_folder, 'size-'+str(motif_size)+'.gml'))
 
 
