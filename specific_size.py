@@ -278,7 +278,7 @@ def parse_args():
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
     parser.add_argument('-target', type=str, default='spatial_data/demo_data.gml',
-                        help='k-hop')
+                        help='path of input target cellular community graph')
     parser.add_argument('-celltype', type=int, default=8,
                         help='number of cell types')
     parser.add_argument('-outpath', type=str, default='result/',
