@@ -96,7 +96,7 @@ To identify all top overrepresented CC motifs from size3 to size5(default) in th
 python all_size.py -size 4 -k 2 -graph demo_data/demo_data.gml -celltype 8 -outpath result/
 ```
 ##### Command Line Arguments:
-*	-size: The maximum size of the generated top overrepresented CC motifs.[default: 5] [maximum: 9]
+*	-size: The maximum size of the generated top overrepresented CC motifs.[default: 4] [maximum: 9]
 *	-k: k-hop.
 *	-graph: file path for input cellular community graph.
 *	-celltype: number of cell types.
