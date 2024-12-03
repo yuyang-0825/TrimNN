@@ -236,11 +236,11 @@ def subgraph_matching(pattern, graph_path, model_path, result_path, k):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Subgraph Matching')
-    parser.add_argument('-target', type=str, default='demo_data/size-3.gml',
+    parser.add_argument('-motif', type=str, default='demo_data/size-3.gml',
                         help='The path of input motif data')
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
-    parser.add_argument('-graph', type=str, default='demo_data/demo_data.gml',
+    parser.add_argument('-target', type=str, default='demo_data/demo_data.gml',
                         help='The path of input graph data')
     parser.add_argument('-outpath', type=str, default='result/',
                         help='folder path for output result')
