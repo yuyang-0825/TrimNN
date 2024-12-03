@@ -378,7 +378,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Identify specific size top overrepresented CC motif')
-    parser.add_argument('-size', type=int, default=5,
+    parser.add_argument('-size', type=int, default=4,
                         help='specific size of CC motif (from 3 to 9)')
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
