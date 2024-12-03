@@ -277,7 +277,7 @@ def parse_args():
                         help='specific size of CC motif (from 3 to 9)')
     parser.add_argument('-k', type=int, default=2,
                         help='k-hop')
-    parser.add_argument('-target', type=str, default='spatial_data/demo_data.gml',
+    parser.add_argument('-target', type=str, default='demo_data/demo_data.gml',
                         help='path of input target cellular community graph')
     parser.add_argument('-celltype', type=int, default=8,
                         help='number of cell types')
