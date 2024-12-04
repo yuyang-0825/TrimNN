@@ -65,7 +65,7 @@ python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -
 * -out: The path of generated target gml data
 * -motif_size: The size of input motif.
 * -motif_label: The cell type of input motif(combine with "_").
-* The generated motif gml will appear in the same folder as target graph gml.
+* The generated specific motif gml will appear in the same folder as target graph gml.
  
 ## Demo
 ### Function 1: Subgraph Matching
