@@ -96,12 +96,13 @@ python specific_size.py -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8
 ### Function 3: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size4(default) in the target cellular community graph, run:
 ```
-python all_size.py -size 4 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function3/
+python all_size.py -size 4 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function3/ -search greedy 
 ```
 ##### Command Line Arguments:
-*	-size: The maximum size of the generated top overrepresented CC motifs.[default: 4] [maximum: 9]
+*	-size: The maximum size of the generated top overrepresented CC motifs (from 3 to 9).
 *	-k: Use k-hop to get each node’s enclosed graph.
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml.
 *	-outpath: The folder path for output result.
+*	-search: Search method for motif growth, now is greedy.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
