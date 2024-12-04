@@ -388,6 +388,8 @@ def parse_args():
                         help='number of cell types')
     parser.add_argument('-outpath', type=str, default='result',
                         help='folder path for output result')
+    parser.add_argument('-search', type=str, default='greedy',
+                        help='Search method for motif growth, now is greedy')
 
     args = parser.parse_args()
     return args
@@ -400,11 +402,14 @@ if __name__ == "__main__":
     k = args.k
     labelnum = args.celltype
     graph_path = args.target
-
-    result_path = args.outpath
-    if not os.path.exists(result_path):
-        os.makedirs(result_path)
-
-    model_path = 'model/TrimNN.pt'
-
-    enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path)
+    search = args.search
+    if search == "greedy":
+        result_path = args.outpath
+        if not os.path.exists(result_path):
+            os.makedirs(result_path)
+    
+        model_path = 'model/TrimNN.pt'
+    
+        enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path)
+    else:
+        print("Now we only support greedy method for searching ,more methods are in development")
