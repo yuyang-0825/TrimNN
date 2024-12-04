@@ -1,4 +1,4 @@
-# TrimNN: Cellular community motif modeling for multicellular organization in complex tissues
+# TrimNN: Characterizing cellular community motifs for studying multicellular topological organization in complex tissues
 
 <img src="https://img.shields.io/badge/TrimNN-v0.0.1-blue"> <img src="https://img.shields.io/badge/Platform-Linux-blue"> <img src="https://img.shields.io/badge/Language-python3-blue"> <img src="https://img.shields.io/badge/License-MIT-blue">
 
