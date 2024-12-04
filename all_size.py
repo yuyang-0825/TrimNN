@@ -323,7 +323,7 @@ def generate_patterns_with_new_node(best_pattern,graph_path,labelnum):
 def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
 
     triangle_pattern = enumerate_triangle(graph_path,model_path,labelnum,k)
-    triangle_pattern.write(os.path.join(result_path,"Best_size3.gml"), format='gml')
+    triangle_pattern.write(os.path.join(result_path,"Overrepresented_size3.gml"), format='gml')
 
     now_size = triangle_pattern.vcount()
     best_pattern = triangle_pattern
@@ -371,7 +371,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
         # best_pattern_list = list(result.loc[max_value_indices, 'graph'])
         # for i ,pattern in enumerate(best_pattern_list):
         #     pattern.write("pattern/CCC_replicate2_disease_best_" + str(now_size) + "_"+str(i)+".gml",format = 'gml')
-        # best_pattern.write("pattern/best_" + str(now_size) + ".gml",format = 'gml')
+        # best_pattern.write("pattern/Overrepresented_" + str(now_size) + ".gml",format = 'gml')
 
     return best_pattern
 
