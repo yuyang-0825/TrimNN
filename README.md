@@ -44,7 +44,7 @@ pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 pip install -r requirements.txt
 ```
-
+* Note: If you encounter this problem ```undefined symbol: iJIT_NotifyEvent``` when running, please try ```conda install mkl==2024.0``` to solve.
 ## Data Preparation
 
 ### Input Spatial Omics Data
