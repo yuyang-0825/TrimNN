@@ -363,7 +363,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
                 best_pattern_num = pattern_pred
 
         now_size+=1
-        best_pattern.write(os.path.join(result_path,"Best_size" + str(now_size) + ".gml"), format='gml')
+        best_pattern.write(os.path.join(result_path,"Overrepresented_size" + str(now_size) + ".gml"), format='gml')
         # max_value = result['pattern_pred'].max()
         # result.to_csv("results_2hop/CMM2_replicate2_disease_"+str(now_size) + "size_test.csv", index=False)
         # print(max_value)
