@@ -74,10 +74,10 @@ To predict the number of occurrences of the input CC motif in the target cellula
 python subgraph_matching.py -motif demo_data/size-3.gml -k 2 -target demo_data/demo_data.gml -outpath result_function1/
 ```
 ##### Command Line Arguments:
-*	-motif: file path for input CC motif.
-*	-k: k-hop.
-*	-target: file path for input cellular community graph.
-*	-outpath: folder path for output result.
+*	-motif: The file path for input CC motif.
+*	-k: Use k-hop to get each node’s enclosed graph.
+*	-target: The file path for input cellular community graph.
+*	-outpath: The folder path for output result.
 *	This function takes about 1 minute to generate result on the machine with A100 GPU.
   
 ### Function 2: Identify specific size top overrepresented CC motif
@@ -86,11 +86,11 @@ To identify the specific size top overrepresented CC motif in the target cellula
 python specific_size.py -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function2/
 ```
 ##### Command Line Arguments:
-*	-size: specific size of CC motif (from 3 to 9).
-*	-k: k-hop.
-*	-target: file path for input cellular community graph.
-*	-celltype: number of cell types.
-*	-outpath: folder path for output result.
+*	-size: The specific size of CC motif (from 3 to 9).
+*	-k: Use k-hop to get each node’s enclosed graph.
+*	-target: The file path for input cellular community graph.
+*	-celltype: The number of cell types in the input target gml.
+*	-outpath: The folder path for output result.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
 
 ### Function 3: Identify all top overrepresented CC motifs
@@ -100,8 +100,8 @@ python all_size.py -size 4 -k 2 -target demo_data/demo_data.gml -celltype 8 -out
 ```
 ##### Command Line Arguments:
 *	-size: The maximum size of the generated top overrepresented CC motifs.[default: 4] [maximum: 9]
-*	-k: k-hop.
-*	-target: file path for input cellular community graph.
-*	-celltype: number of cell types.
-*	-outpath: folder path for output result.
+*	-k: Use k-hop to get each node’s enclosed graph.
+*	-target: The file path for input cellular community graph.
+*	-celltype: The number of cell types in the input target gml.
+*	-outpath: The folder path for output result.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
