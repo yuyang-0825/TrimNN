@@ -71,7 +71,7 @@ python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -
 ### Function 1: Subgraph Matching
 To predict the number of occurrences of the input CC motif in the target cellular community graph, run:
 ```
-python subgraph_matching.py -motif demo_data/size-3.gml -k 2 -target demo_data/demo_data.gml -outpath result/
+python subgraph_matching.py -motif demo_data/size-3.gml -k 2 -target demo_data/demo_data.gml -outpath result_function1/
 ```
 ##### Command Line Arguments:
 *	-motif: file path for input CC motif.
@@ -83,7 +83,7 @@ python subgraph_matching.py -motif demo_data/size-3.gml -k 2 -target demo_data/d
 ### Function 2: Identify specific size top overrepresented CC motif
 To identify the specific size top overrepresented CC motif in the target cellular community graph, run:
 ```
-python specific_size.py -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result/
+python specific_size.py -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function2/
 ```
 ##### Command Line Arguments:
 *	-size: specific size of CC motif (from 3 to 9).
@@ -96,7 +96,7 @@ python specific_size.py -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8
 ### Function 3: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size4(default) in the target cellular community graph, run:
 ```
-python all_size.py -size 4 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result/
+python all_size.py -size 4 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function3/
 ```
 ##### Command Line Arguments:
 *	-size: The maximum size of the generated top overrepresented CC motifs.[default: 4] [maximum: 9]
