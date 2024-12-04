@@ -61,7 +61,7 @@ config = {
     "weight_decay": 0.00001,
     "max_grad_norm": 8,
 
-    "model": "Transform",  # CNN, RNN, TXL, RGCN, RGIN, RSIN
+    "model": "RGIN",  # CNN, RNN, TXL, RGCN, RGIN, RSIN
 
     "emb_dim": 128,
     "activation_function": "leaky_relu",  # sigmoid, softmax, tanh, relu, leaky_relu, prelu, gelu
