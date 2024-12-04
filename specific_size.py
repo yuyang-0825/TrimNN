@@ -20,6 +20,7 @@ from tqdm import tqdm
 from rgin import RGIN
 from utils import get_PE
 from dataset import Sampler, EdgeSeqDataset, GraphAdjDataset
+import pandas as pd
 warnings.filterwarnings("ignore")
 import argparse
 
@@ -235,6 +236,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
     # for labels in left_tuple:
     best_pattern_num = 0
     best_pattern = initial_pattern.copy()
+    result = pd.DataFrame(columns=['motif', 'predicted_occurrence_number'])
     for pattern in tqdm(pattern_list, desc="Enumrating CC motifs"):
 
         pattern_pred = 0
@@ -263,12 +265,15 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
         pred_exist = evaluate_results["data"]["pred_exist"]
 
         pattern_pred += pred_exist
+        result = result._append({'motif': pattern, 'predicted_occurrence_number': pattern_pred},
+                                ignore_index=True)
 
         if pattern_pred >= best_pattern_num:
             best_pattern = pattern
             best_pattern_num = pattern_pred
 
-    best_pattern.write(os.path.join(result_path,"Best_size"+str(size)+'.gml'), format='gml')
+    result.to_csv(os.path.join(result_path,"Predicted_occurrence_size"+str(size)+'.csv'), index=False)
+    best_pattern.write(os.path.join(result_path,"Overrepresented_size"+str(size)+'.gml'), format='gml')
 
 
 def parse_args():
