@@ -273,7 +273,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
             dataset = GraphAdjDataset(x, k)
             dataset = get_PE(dataset)
 
-        sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
+        sampler = Sampler(dataset, group_by=["graph",'label', "pattern"], batch_size=config["batch_size"],
                           shuffle=data_type == "train", drop_last=False)
         data_loader = DataLoader(dataset,
                                  batch_sampler=sampler,
@@ -290,7 +290,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
         pred_exist = evaluate_results["data"]["pred_exist"]
 
         pattern_pred += pred_exist
-        result = result._append({'motif': pattern, 'predicted_occurrence_number': pattern_pred},
+        result = result._append({'motif': pattern,'label':pattern.vs["label"], 'predicted_occurrence_number': pattern_pred},
                                 ignore_index=True)
 
         if pattern_pred >= best_pattern_num:
