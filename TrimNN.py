@@ -261,7 +261,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
     # for labels in left_tuple:
     best_pattern_num = 0
     best_pattern = initial_pattern.copy()
-    result = pd.DataFrame(columns=['motif', 'predicted_occurrence_number'])
+    result = pd.DataFrame(columns=['motif','label', 'predicted_occurrence_number'])
     for pattern in tqdm(pattern_list, desc="Enumrating CC motifs"):
 
         pattern_pred = 0
@@ -273,7 +273,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
             dataset = GraphAdjDataset(x, k)
             dataset = get_PE(dataset)
 
-        sampler = Sampler(dataset, group_by=["graph",'label', "pattern"], batch_size=config["batch_size"],
+        sampler = Sampler(dataset, group_by=["graph", "pattern"], batch_size=config["batch_size"],
                           shuffle=data_type == "train", drop_last=False)
         data_loader = DataLoader(dataset,
                                  batch_sampler=sampler,
