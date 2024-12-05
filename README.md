@@ -64,7 +64,7 @@ python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -
 * -target: The path of input target cellular community graph data.
 * -out: The path of generated target gml data
 * -motif_size: The size of input motif.
-* -motif_label: The cell type of input motif(combine with "_").
+* -motif_label: The cell type of input motif (combine with "_").
 * The generated specific motif gml will appear in the same folder as target graph gml.
  
 ## Demo
@@ -75,7 +75,7 @@ python TrimNN.py -function subgraph_matching -motif demo_data/size-3.gml -k 2 -t
 ```
 ##### Command Line Arguments:
 *	-motif: The file path for input CC motif.
-*	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
+*	-k: Use k-hop to get each node’s enclosed graph (here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-outpath: Users should expect one file contains predicted occurrence number in this folder.
 *	This function takes about 1 minute to generate result on the machine with A100 GPU.
@@ -87,10 +87,10 @@ python TrimNN.py -function specific_size -size 3 -k 2 -target demo_data/demo_dat
 ```
 ##### Command Line Arguments:
 *	-size: The specific size of CC motif (from 3 to 9).
-*	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
+*	-k: Use k-hop to get each node’s enclosed graph (here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
-*	-celltype: The number of cell types in the input target gml(The input demo_data.gml here has 8 cell types).
-*	-outpath: Users should expect two files in this folder, one file is .gml file of top overrepresented CC motif, the other .csv file contains all specific size motif's predicted occurrence number(First column is motif in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
+*	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
+*	-outpath: Users should expect two files in this folder, one file is .gml file of top overrepresented CC motif, the other .csv file contains all specific size motif's predicted occurrence number (First column is motif in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
 
 ### Function 3: Identify all top overrepresented CC motifs
@@ -100,9 +100,9 @@ python TrimNN.py -function all_size -size 4 -k 2 -target demo_data/demo_data.gml
 ```
 ##### Command Line Arguments:
 *	-size: The maximum size of the generated top overrepresented CC motifs (from 3 to 9).
-*	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
+*	-k: Use k-hop to get each node’s enclosed graph (here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
-*	-celltype: The number of cell types in the input target gml(The input demo_data.gml here has 8 cell types).
-*	-outpath: Users should expect several .gml files of top overrepresented CC motif from size-3 to specified size(here is 4), and other .csv files contain all different size (from 3 to specified size(here is 4)) motif's predicted occurrence number like Function2 in this folder.
-*	-search: Search method for motif growth, now is greedy.
+*	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
+*	-outpath: Users should expect several .gml files of top overrepresented CC motif from size-3 to specified size (here is 4), and other .csv files contain all different size (from 3 to specified size (here is 4)) motif's predicted occurrence number like Function2 in this folder.
+*	-search: Search CC motifs in larger size in the process of pattern growth, currently we support greedy search.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
