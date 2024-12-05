@@ -406,10 +406,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
     while(now_size<size):
 
         best_pattern_num = 0
-        result = pd.DataFrame(columns=['graph','label', 'pattern_pred'])
         new_patternlist = generate_patterns_with_new_node(best_pattern,graph_path,labelnum)
-
-
         result = pd.DataFrame(columns=['motif','label', 'predicted_occurrence_number'])
         for new_pattern in tqdm(new_patternlist, desc="Searching CC motifs"):
             data = load_data(graph_path, new_pattern)
@@ -434,7 +431,7 @@ def enumerate_all_size(size,graph_path, model_path, labelnum,k,result_path):
             pattern_pred = evaluate_results["data"]["pred_exist"]
             
             # print(pattern_pred)
-            result = result._append({'graph': new_pattern,'label':new_pattern.vs["label"], 'predicted_occurrence_number': pattern_pred}, ignore_index=True)
+            result = result._append({'motif': new_pattern,'label':new_pattern.vs["label"], 'predicted_occurrence_number': pattern_pred}, ignore_index=True)
             if pattern_pred >= best_pattern_num:
                 best_pattern = new_pattern
                 best_pattern_num = pattern_pred
