@@ -80,17 +80,17 @@ python TrimNN.py -function subgraph_matching -motif demo_data/size-3.gml -k 2 -t
 *	-outpath: Users should expect one file contains predicted occurrence number in this folder.
 *	This function takes about 1 minute to generate result on the machine with A100 GPU.
   
-### Function 2: Identify specific size top overrepresented CC motif
-To identify the specific size top overrepresented CC motif in the target cellular community graph, run:
+### Function 2: Identify specific size top overrepresented CC motifs
+To identify the specific size top overrepresented CC motifs in the target cellular community graph, run:
 ```
 python TrimNN.py -function specific_size -size 3 -k 2 -target demo_data/demo_data.gml -celltype 8 -outpath result_function2/
 ```
 ##### Command Line Arguments:
-*	-size: The specific size of CC motif (from 3 to 9).
+*	-size: The specific size of CC motifs (from 3 to 9).
 *	-k: Use k-hop to get each node’s enclosed graph (here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
-*	-outpath: Users should expect two files in this folder, one file is .gml file of top overrepresented CC motif, the other .csv file contains all specific size motif's predicted occurrence number (First column is motif in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
+*	-outpath: Users should expect two files in this folder, one file is .gml file of top overrepresented CC motif, the other .csv file contains all specific size motifs' predicted occurrence number (First column is motifs in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
 
 ### Function 3: Identify all top overrepresented CC motifs
@@ -103,6 +103,6 @@ python TrimNN.py -function all_size -size 4 -k 2 -target demo_data/demo_data.gml
 *	-k: Use k-hop to get each node’s enclosed graph (here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
-*	-outpath: Users should expect several .gml files of top overrepresented CC motif from size-3 to specified size (here is 4), and other .csv files contain all different size (from 3 to specified size (here is 4)) motif's predicted occurrence number like Function2 in this folder.
+*	-outpath: Users should expect several .gml files of top overrepresented CC motifs from size-3 to specified size (here is 4), and other .csv files contain all different size (from 3 to specified size (here is 4)) motifs' predicted occurrence number like Function2 in this folder.
 *	-search: Search CC motifs in larger size in the process of pattern growth, currently we support greedy search.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
