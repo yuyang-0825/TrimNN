@@ -504,5 +504,7 @@ if __name__ == "__main__":
             enumerate_all_size(size, graph_path, model_path, labelnum, k, result_path)
         else:
             print("Now we only support greedy method for searching ,more methods are in development")
+    else:
+        print("Don't have this function")
 
 
