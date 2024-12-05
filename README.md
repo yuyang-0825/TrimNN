@@ -77,7 +77,7 @@ python TrimNN.py -function subgraph_matching -motif demo_data/size-3.gml -k 2 -t
 *	-motif: The file path for input CC motif.
 *	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
-*	-outpath: You should expected predicted occurrence number in this folder.
+*	-outpath: You should expected one file contains predicted occurrence number in this folder.
 *	This function takes about 1 minute to generate result on the machine with A100 GPU.
   
 ### Function 2: Identify specific size top overrepresented CC motif
@@ -90,7 +90,7 @@ python TrimNN.py -function specific_size -size 3 -k 2 -target demo_data/demo_dat
 *	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml(The input demo_data.gml here has 8 cell types).
-*	-outpath: You should expected two files, one file is .gml file of top overrepresented CC motif, the other file is all specific size motif's predicted occurrence number in this folder.
+*	-outpath: You should expected two files in this folder, one file is .gml file of top overrepresented CC motif, the other file contains all specific size motif's predicted occurrence number(first column is motif, second column is predicted occurrence number).
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
 
 ### Function 3: Identify all top overrepresented CC motifs
