@@ -11,7 +11,7 @@
 This empowered graph isomorphism network-based framework adopts inductive bias in cellular communities and focuses on estimating the relative abundance in the triangulated space. Beyond clusters of cell type composition from classical top-down multicellular neighborhood analysis, this method differentiates cellular niches as countable building blocks in recurring interconnections of various types, presenting interpretability and generalizability in cellular neighborhood analysis. In colorectal cancer and neurodegenerative disease studies using spatial proteomics and spatial transcriptomics, various sizes of CC motifs reveal diverse relations between micro-molecular spatially distributed cell types and macro phenotypical biological functions. Notably, orthologous to gene biomarkers, the identified spatial CC motifs differentiate patient survivals in colorectal cancer studies, which cannot be inferred by other existing tools. 
 
 ## System Requirements
-Tested on Red Hat Enterprise Linux 7.9
+Tested on Red Hat Enterprise Linux 7.9 and SUSE Linux Enterprise Server 15 SP3.
 
 ### Install TrimNN from Github
 ```
@@ -90,7 +90,7 @@ python TrimNN.py -function specific_size -size 3 -k 2 -target demo_data/demo_dat
 *	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml(The input demo_data.gml here has 8 cell types).
-*	-outpath: You should expected two files in this folder, one file is .gml file of top overrepresented CC motif, the other file contains all specific size motif's predicted occurrence number(first column is motif, second column is predicted occurrence number).
+*	-outpath: You should expected two files in this folder, one file is .gml file of top overrepresented CC motif, the other .csv file contains all specific size motif's predicted occurrence number(First column is motif in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
 
 ### Function 3: Identify all top overrepresented CC motifs
@@ -103,6 +103,6 @@ python TrimNN.py -function all_size -size 4 -k 2 -target demo_data/demo_data.gml
 *	-k: Use k-hop to get each node’s enclosed graph(here k=2 is the default value).
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml(The input demo_data.gml here has 8 cell types).
-*	-outpath: You should expected .gml files of top overrepresented CC motif from size-3 to specified size(here is 4) in this folder.
+*	-outpath: You should expected several .gml files of top overrepresented CC motif from size-3 to specified size(here is 4), and other .csv files contain all different size (from 3 to specified size(here is 4)) motif's predicted occurrence number like Function2 in this folder.
 *	-search: Search method for motif growth, now is greedy.
 *	This function takes about 3 minutes to generate result on the machine with A100 GPU.
