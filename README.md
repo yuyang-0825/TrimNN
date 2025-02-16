@@ -24,6 +24,7 @@ conda create -n TrimNNEnv python=3.9
 conda activate TrimNNEnv
 ```
 #### Install PyTorch and DGL 
+* *Note : If you encounter this problem with an ```undefined symbol: iJIT_NotifyEvent``` when running, please try ```conda install mkl==2024.0``` to solve.
 * **Linux with CUDA**
 ```
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
@@ -42,7 +43,6 @@ pip install dgl==1.1.2 -f https://data.dgl.ai/wheels/repo.html
 ```
 pip install -r requirements.txt
 ```
-* Note: If you encounter this problem with an ```undefined symbol: iJIT_NotifyEvent``` when running, please try ```conda install mkl==2024.0``` to solve.
 ## Data Preparation
 
 ### Input Spatial Omics Data
