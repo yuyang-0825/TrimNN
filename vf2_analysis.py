@@ -57,7 +57,7 @@ def enumerate_specific_size(initial_pattern, graph_path, result_path, labelnum):
 
     graph = ig.read(graph_path)
     pattern_list = patternlist(initial_pattern, labelnum)
-    result = pd.DataFrame(columns=['motif', 'predicted_occurrence_number'])
+    result = pd.DataFrame(columns=['motif','label', 'occurrence_number'])
     best_pattern_num = 0
 
     for pattern in tqdm(pattern_list, desc="Enumrating CC motifs"):
@@ -65,8 +65,9 @@ def enumerate_specific_size(initial_pattern, graph_path, result_path, labelnum):
         pc = PatternChecker()
         subisomorphisms = pc.get_subisomorphisms(graph, pattern)
         subisomorphisms_unique = process_nested_list_column(subisomorphisms)
-        result = result._append({'motif': pattern, 'Occurrence_number': len(subisomorphisms_unique)},
-                                ignore_index=True)
+        result = result._append(
+            {'motif': pattern, 'label': pattern.vs["label"], 'occurrence_number': len(subisomorphisms_unique)},
+            ignore_index=True)
         if len(subisomorphisms_unique) >= best_pattern_num:
             best_pattern = pattern
             best_pattern_num = len(subisomorphisms_unique)
@@ -78,7 +79,7 @@ def enumerate_specific_size(initial_pattern, graph_path, result_path, labelnum):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='VF2_methods')
-    parser.add_argument('-size', type=int, default=3,
+    parser.add_argument('-size', type=int, default=4,
                         help='specific size of CC motif (from 3 to 9)')
     parser.add_argument('-target', type=str, default='demo_data/demo_data.gml',
                         help='The path of input graph data')
