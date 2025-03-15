@@ -90,15 +90,8 @@ python TrimNN.py -function specific_size -size 3 -k 2 -target demo_data/demo_dat
 *	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
 *	-outpath: Users should expect two files in this folder, one file is .gml file of the top overrepresented CC motif, and the other .csv file contains all specific size motifs' predicted occurrence number (The first column is motifs in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
 *	This function takes about 3 minutes to generate results on the machine with A100 GPU.
-*	
-**Optional:** If you want to use VF2 method to test this function:
-```
-python vf2_analysis.py -size 3 -target demo_data/demo_data.gml -celltype 8 -outpath result_vf2_function2/
-```
-*	-size: The specific size of CC motifs (from 3 to 9).
-*	-target: The file path for input cellular community graph.
-*	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
-*	-outpath: Users should expect two files in this folder, one file is .gml file of the top overrepresented CC motif, and the other .csv file contains all specific size motifs' predicted occurrence number (The first column is motifs in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
+  
+
 
 ### Function 3: Identify all top overrepresented CC motifs
 To identify all top overrepresented CC motifs from size3 to size4(default) in the target cellular community graph, run:
@@ -113,3 +106,13 @@ python TrimNN.py -function all_size -size 4 -k 2 -target demo_data/demo_data.gml
 *	-outpath: Users should expect several .gml files of top overrepresented CC motifs from size-3 to specified size (here is 4), and other .csv files contain all different sizes (from 3 to specified size (here is 4)) motifs' predicted occurrence number like Function2 in this folder.
 *	-search: Search CC motifs in larger size in the process of pattern growth, currently we support greedy search.
 *	This function takes about 3 minutes to generate results on the machine with A100 GPU.
+
+### Optional:
+If you want to use the classical enumeration-based VF2 method to test Function 2:
+```
+python vf2_analysis.py -size 3 -target demo_data/demo_data.gml -celltype 8 -outpath result_vf2_function2/
+```
+*	-size: The specific size of CC motifs (from 3 to 9).
+*	-target: The file path for input cellular community graph.
+*	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
+*	-outpath: Users should expect two files in this folder, one file is .gml file of the top overrepresented CC motif, and the other .csv file contains all specific size motifs' predicted occurrence number (The first column is motifs in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
