@@ -264,7 +264,7 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
     result = pd.DataFrame(columns=['motif','label', 'predicted_occurrence_number'])
     for pattern in tqdm(pattern_list, desc="Enumrating CC motifs"):
 
-        pattern_pred = 0
+        # pattern_pred = 0
 
 
         data = load_data(graph_path, pattern)
@@ -289,13 +289,13 @@ def enumerate_specific_size(initial_pattern, graph_path, model_path, result_path
         evaluate_results = evaluate(model, data_type, data_loader, device, config)
         pred_exist = evaluate_results["data"]["pred_exist"]
 
-        pattern_pred += pred_exist
-        result = result._append({'motif': pattern,'label':pattern.vs["label"], 'predicted_occurrence_number': pattern_pred},
+        # pattern_pred += pred_exist
+        result = result._append({'motif': pattern,'label':pattern.vs["label"], 'predicted_occurrence_number': pred_exist},
                                 ignore_index=True)
 
-        if pattern_pred >= best_pattern_num:
+        if pred_exist >= best_pattern_num:
             best_pattern = pattern
-            best_pattern_num = pattern_pred
+            best_pattern_num = pred_exist
 
     result.to_csv(os.path.join(result_path,"Predicted_occurrence_size"+str(size)+'.csv'), index=False)
     best_pattern.write(os.path.join(result_path,"Overrepresented_size"+str(size)+'.gml'), format='gml')
@@ -315,7 +315,7 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
         initial_pattern.vs["label"] = labels
         initial_pattern.es["label"] = 0
         initial_pattern["type"] = labels
-        pattern_pred = 0
+        # pattern_pred = 0
 
         # for graph_name in graph_names:
         data = load_data(graph_path, initial_pattern)
@@ -338,12 +338,12 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
         model = model.to(device)
         evaluate_results = evaluate(model, data_type, data_loader, device, config)
         pred_exist = evaluate_results["data"]["pred_exist"]
-        result = result._append({'motif': initial_pattern,'label':initial_pattern.vs["label"], 'predicted_occurrence_number': pattern_pred},
+        result = result._append({'motif': initial_pattern,'label':initial_pattern.vs["label"], 'predicted_occurrence_number': pred_exist},
                                 ignore_index=True)
         
-        pattern_pred += pred_exist
+        # pattern_pred += pred_exist
 
-        if pattern_pred > max_occur:
+        if pred_exist > max_occur:
             max_pattern = initial_pattern.copy()
             
     result.to_csv(os.path.join(result_path,"Predicted_occurrence_size3.csv"), index=False)
