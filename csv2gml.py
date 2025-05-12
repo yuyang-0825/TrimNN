@@ -15,7 +15,7 @@ def parse_args():
     parser.add_argument('-motif_size', type=int,
                         help='The size of input motif')
     parser.add_argument('-motif_label', type=str,help='The cell type of input motif(combine with "_")')
-    parser.add_argument('-prune', type=bool,default=True, help='Whether to prune outlier edges.')
+    parser.add_argument('-prune', type=bool,default=False, help='Whether to prune outlier edges.')
     args = parser.parse_args()
     return args
 
