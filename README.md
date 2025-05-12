@@ -50,20 +50,23 @@ A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_ty
 
 Generate a gml file from your input CSV file as TrimNN's input.
 ```
-python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml
+python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -prune False
 ```
 * -target: The path of input target cellular community graph data.
 * -out: The path of generated gml data
+* -prune: Whether to prune outlier edges.
 
 **Optional:** If you want to input a specific CC motif to test the "Subgraph Matching" function:
 ```
-python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -motif_size 3 -motif_label Micro_Micro_Micro
+python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -motif_size 3 -motif_label Micro_Micro_Micro -prune False
 ```
 * -target: The path of input target cellular community graph data.
 * -out: The path of generated target gml data
 * -motif_size: The size of the input motif.
 * -motif_label: The cell type of input motif (combined with "_").
+* -prune: Whether to prune outlier edges.
 * The generated specific motif gml will appear in the same folder as the target graph gml.
+
  
 ## Demo
 ### Function 1: Subgraph Matching
