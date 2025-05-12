@@ -4,6 +4,7 @@ from scipy.spatial import Delaunay
 from igraph import Graph
 import os
 import argparse
+from scipy import stats
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
@@ -14,6 +15,7 @@ def parse_args():
     parser.add_argument('-motif_size', type=int,
                         help='The size of input motif')
     parser.add_argument('-motif_label', type=str,help='The cell type of input motif(combine with "_")')
+    parser.add_argument('-prune', type=bool,default=True, help='Whether to prune outlier edges.')
     args = parser.parse_args()
     return args
 
@@ -21,6 +23,7 @@ if __name__ == '__main__':
     args = parse_args()
     input_path = args.target
     out_path = args.out
+    prune = args.prune
     out_folder = out_path.split('/')[0]
     if not os.path.exists(out_folder):
         os.makedirs(out_folder)
@@ -33,8 +36,56 @@ if __name__ == '__main__':
     points = np.stack((df['X'],df['Y']),axis=-1)
     tri = Delaunay(points)
 
+    if prune==True:
+        edge_lengths = []
+        edge_ids = set()
+
+        # First pass to collect unique edge lengths
+        for triangle in tri.simplices:
+            for i in range(3):
+                i0 = triangle[i]
+                i1 = triangle[(i + 1) % 3]
+                if (i1, i0) in edge_ids:
+                    continue
+                length = np.linalg.norm(points[i0] - points[i1])
+                edge_lengths.append(length)
+                edge_ids.add((i0, i1))
+
+        # Compute log-normal threshold
+        log_mean = np.mean(np.log(edge_lengths))
+        log_std = np.std(np.log(edge_lengths))
+        threshold = stats.lognorm.ppf(0.99, loc=log_mean, s=log_std, scale=np.exp(log_mean))
+
+        # Classify edges
+        small_edges = set()
+        large_edges = set()
+
+        for edge in edge_ids:
+            i0, i1 = edge
+            length = np.linalg.norm(points[i0] - points[i1])
+            if length < threshold:
+                small_edges.add(edge)
+            else:
+                large_edges.add(edge)
+
+        # Filter triangles
+        small_triangles = []
+        for triangle in tri.simplices:
+            all_small = True
+            for i in range(3):
+                i0 = triangle[i]
+                i1 = triangle[(i + 1) % 3]
+                if (i0, i1) in large_edges or (i1, i0) in large_edges:
+                    all_small = False
+                    break
+            if all_small:
+                small_triangles.append(triangle)
+        triangles = small_triangles
+    else:
+        triangles = tri.simplices
+
     adjmatrix = np.zeros((points.shape[0], points.shape[0]))
-    for triangle in tri.simplices:
+    for triangle in triangles:
         adjmatrix[triangle[0], triangle[1]] = 1
         adjmatrix[triangle[1], triangle[0]] = 1
         adjmatrix[triangle[0], triangle[2]] = 1
@@ -81,5 +132,3 @@ if __name__ == '__main__':
         motif.es["label"] = 0
 
         motif.write(os.path.join(out_folder, 'size-'+str(motif_size)+'.gml'))
-
-
