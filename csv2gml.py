@@ -5,6 +5,8 @@ from igraph import Graph
 import os
 import argparse
 from scipy import stats
+import csv
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
@@ -99,6 +101,13 @@ if __name__ == '__main__':
     cell_types = df['cell_type']
 
     label_to_int = {label: idx for idx, label in enumerate(unqiue_cell_type)}
+    
+    with open(os.path.join(out_folder, 'cell_type_to_id.csv'), mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['cell_type', 'cell_type_id'])
+    for key, value in label_to_int.items():
+        writer.writerow([key, value])
+        
     label = [label_to_int[cell_type] for cell_type in cell_types]
 
     graph.vs["label"] = label
