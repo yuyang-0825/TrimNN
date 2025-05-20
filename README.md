@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/TrimNN-v0.0.1-blue"> <img src="https://img.shields.io/badge/Platform-Linux-blue"> <img src="https://img.shields.io/badge/Language-python3-blue"> <img src="https://img.shields.io/badge/License-MIT-blue">
 
 <p align="center">
-  <img height="450" width="800" src="https://github.com/yuyang-0825/TrimNN/blob/main/TrimNN.png"/>
+  <img height="450" width="800" src="https://github.com/yuyang-0825/TrimNN/blob/main/TrimNN_figure.png"/>
 </p>
 
 The spatial arrangement of cells plays a pivotal role in shaping tissue functions in various biological systems and diseased microenvironments. However, it is still under-investigated of the topological coordinating rules among different cell types as tissue spatial patterns. Here, we introduce the **Tri**angulation cellular community **m**otif **N**eural **N**etwork (**TrimNN**), a bottom-up approach to estimate the prevalence of sizeable conservative cell organization patterns as Cellular Community (CC) motifs in spatial transcriptomics and proteomics. Different from clustering cell type composition from classical top-down analysis, TrimNN differentiates cellular niches as countable topological blocks in recurring interconnections of various types, representing multicellular neighborhoods with interpretability and generalizability. This graph-based deep learning framework adopts inductive bias in CCs and uses a semi-divide and conquer approach in the triangulated space. In spatial omics studies, various sizes of CC motifs identified by TrimNN robustly reveal relations between spatially distributed cell-type patterns and diverse phenotypical biological functions. 
