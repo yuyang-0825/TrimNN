@@ -57,6 +57,8 @@ python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -
 * -target: The path of input target cellular community graph data.
 * -out: The path of generated gml data
 * -prune: Whether to prune outlier edges.
+* A file named `cell_type_to_id.csv` will also be generated in the output folder to store the mapping between the original cell types and the label values used in the gml file.
+
 
 **Optional:** If you want to input a specific CC motif to test the "Subgraph Matching" function:
 ```
@@ -68,7 +70,7 @@ python csv2gml.py -target demo_data/demo_data.csv -out demo_data/demo_data.gml -
 * -motif_label: The cell type of input motif (combined with "_").
 * -prune: Whether to prune outlier edges.
 * The generated specific motif gml will appear in the same folder as the target graph gml.
-
+* A file named `cell_type_to_id.csv` will also be generated in the output folder to store the mapping between the original cell types and the label values used in the gml file.
  
 ## Demo
 ### Function 1: Subgraph Matching
