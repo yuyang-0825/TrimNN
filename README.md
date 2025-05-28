@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ## Data Preparation
 
 ### Input Spatial Omics Data
-A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_type```  columns to generate a cellular community graph. [[example]](https://github.com/yuyang-0825/TrimNN/blob/main/demo_data/demo_data.csv)
+We applied Delaunay Triangulation to construct the cellular community based on the localization of cells with spatial coordinates. A spatial omics data should include ```X```, ```Y```(coordinates) and ```cell_type```  columns to generate a cellular community graph. [[example]](https://github.com/yuyang-0825/TrimNN/blob/main/demo_data/demo_data.csv). We added an optional step for noise reduction with unnecessary edges to prevent potential artifact edges from being included in certain boundary regions. We computed the lengths of all edges and used the 99th percentile as a threshold to remove outlier edges that are too long. If you want to add this noise reduction step, set the parameter ```-prune``` as ```True```.
 
 Generate a gml file from your input CSV file as TrimNN's input.
 ```
