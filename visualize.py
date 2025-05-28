@@ -14,9 +14,9 @@ def parse_args():
                         help='The path of input graph data')
     parser.add_argument('-outpath', type=str, default='visualization/',
                         help='The  output path of visualized result')
-    parser.add_argument('-motif_size', type=int,default=4,
+    parser.add_argument('-motif_size', type=int,default=2,
                         help='The size of input motif')
-    parser.add_argument('-motif_label',default='CTX-Ex_CTX-Ex_CTX-Ex', type=str,help='The cell type of input motif(combine with "_")')
+    parser.add_argument('-motif_label',default='CTX-Ex_CTX-Ex', type=str,help='The cell type of input motif(combine with "_")')
     args = parser.parse_args()
     return args
 
@@ -41,45 +41,51 @@ if __name__ == '__main__':
 
     tri = Delaunay(points)
 
-    plt.triplot(points[:, 0], points[:, 1], tri.simplices, color='grey', markersize=0.2, linewidth=0.1)
+    if motif_size == 1 or motif_size == 2 or motif_size == 3:
+        plt.triplot(points[:, 0], points[:, 1], tri.simplices, color='grey', markersize=0.2, linewidth=0.1)
 
-    # plt.show()
-    lines = []
-    for sim in tri.simplices:
-        mtf_name = '_'.join(sorted(cell_type[sim]))
+        # plt.show()
+        lines = []
+        for sim in tri.simplices:
+            mtf_name = '_'.join(sorted(cell_type[sim]))
 
-        if motif_size == 1:
-            for i in sim:
-                if cell_type[i] == motif_label:
-                    plt.plot(points[i, 0], points[i, 1], '.', color=color_map[cell_type[i]], markersize=2)
+            if motif_size == 1:
+                for i in sim:
+                    if cell_type[i] == motif_label:
 
-        elif motif_size == 2:
-            edges = ['_'.join(sorted(cell_type[[sim[i],sim[(i+1)%3]]])) for i in range(3)]
-            edge_idx = [[sim[i],sim[(i+1)%3]] for i in range(3)]
-            for i in range(len(edges)):
-                if edges[i]==motif_label:
-                    lines.append(edge_idx[i])
+                        plt.plot(points[i, 0], points[i, 1], '.', color=color_map[cell_type[i]], markersize=2)
 
-        elif motif_size == 3:
-            if mtf_name == motif_label:
-                lines.append([sim[0],sim[1]])
-                lines.append([sim[1],sim[2]])
-                lines.append([sim[0],sim[2]])
-        else:
-            print("For higher-dimensional motifs, due to their structural diversity, users can customize the visualization based on the specific motif patterns of interest.")
-            break
-    for pair in lines:
-        node1, node2 = pair
-        # Plot line between the two points
-        plt.plot([points[node1, 0], points[node2, 0]], [points[node1, 1], points[node2, 1]], color='blue', linewidth=0.8)
-        plt.plot(points[node1, 0], points[node1, 1], '.', color=color_map[cell_type[node1]], markersize=2)
-        plt.plot(points[node2, 0], points[node2, 1], '.', color=color_map[cell_type[node2]], markersize=2)
+            elif motif_size == 2:
+                edges = ['_'.join(sorted(cell_type[[sim[i],sim[(i+1)%3]]])) for i in range(3)]
+                edge_idx = [[sim[i],sim[(i+1)%3]] for i in range(3)]
+                for i in range(len(edges)):
+                    if edges[i]==motif_label:
+                        lines.append(edge_idx[i])
 
-    legend_elements = [
-        Line2D([0], [0], marker='o', color='w', label=ct,
-               markerfacecolor=color_map[ct], markersize=5)
-        for ct in unique_cell_types
-    ]
+            elif motif_size == 3:
+                if mtf_name == motif_label:
+                    lines.append([sim[0],sim[1]])
+                    lines.append([sim[1],sim[2]])
+                    lines.append([sim[0],sim[2]])
 
-    plt.legend(handles=legend_elements, title='Cell Type', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.savefig(os.path.join(out_folder, 'size-'+str(motif_size)+'_visualization.png'), dpi=600, bbox_inches='tight')
+        for pair in lines:
+            node1, node2 = pair
+            # Plot line between the two points
+            plt.plot([points[node1, 0], points[node2, 0]], [points[node1, 1], points[node2, 1]], color='blue',
+                     linewidth=0.8)
+            plt.plot(points[node1, 0], points[node1, 1], '.', color=color_map[cell_type[node1]], markersize=2)
+            plt.plot(points[node2, 0], points[node2, 1], '.', color=color_map[cell_type[node2]], markersize=2)
+
+        legend_elements = [
+            Line2D([0], [0], marker='o', color='w', label=ct,
+                   markerfacecolor=color_map[ct], markersize=5)
+            for ct in unique_cell_types
+        ]
+
+        plt.legend(handles=legend_elements, title='Cell Type', bbox_to_anchor=(1.05, 1), loc='upper left')
+        plt.savefig(os.path.join(out_folder, 'size-' + str(motif_size) + '_visualization.png'), dpi=600,
+                    bbox_inches='tight')
+
+    else:
+        print("For higher-dimensional motifs, due to their structural diversity, users can customize the visualization based on the specific motif patterns of interest.")
+
