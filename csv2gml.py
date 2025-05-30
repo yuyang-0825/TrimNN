@@ -103,10 +103,10 @@ if __name__ == '__main__':
     label_to_int = {label: idx for idx, label in enumerate(unqiue_cell_type)}
     
     with open(os.path.join(out_folder, 'cell_type_to_id.csv'), mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['cell_type', 'cell_type_id'])
-    for key, value in label_to_int.items():
-        writer.writerow([key, value])
+        writer = csv.writer(file)
+        writer.writerow(['cell_type', 'cell_type_id'])
+        for key, value in label_to_int.items():
+            writer.writerow([key, value])
         
     label = [label_to_int[cell_type] for cell_type in cell_types]
 
