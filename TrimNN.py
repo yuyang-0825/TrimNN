@@ -131,6 +131,7 @@ config = {
 }
 def evaluate(model, data_type, data_loader, device, config, logger=None, writer=None):
     epoch_step = len(data_loader)
+    assert max(data_loader.batch_sampler.graph)<=128,"Each k-hop subgraph should contain no more than 128 nodes. If this limit is exceeded, please try setting `prune=True` or reduce the value of `k`."
     # total_step = config["epochs"] * epoch_step
     total_cnt = 1e-6
 
