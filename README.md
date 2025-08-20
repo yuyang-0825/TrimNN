@@ -6,6 +6,8 @@
   <img height="450" width="800" src="https://github.com/yuyang-0825/TrimNN/blob/main/TrimNN_figure.png"/>
 </p>
 
+This is the official codebase for [**TrimNN**](https://www.nature.com/articles/s41467-025-63141-7).
+
 The spatial organization of cells plays a pivotal role in shaping tissue functions and phenotypes in various biological systems and diseased microenvironments. However, the topological principles governing interactions among cell types within spatial patterns remain poorly understood. Here, we introduce the **Tri**angulation cellular community **m**otif **N**eural **N**etwork (**TrimNN**), a graph-based deep learning framework designed to identify conserved spatial cell organization patterns, termed Cellular Community (**CC**) motifs, from spatial transcriptomics and proteomics data. TrimNN employs a semi-divide-and-conquer approach to efficiently detect over-represented topological motifs of varying sizes in a triangulated space. By uncovering CC motifs, TrimNN reveals key associations between spatially distributed cell-type patterns and diverse phenotypes. These insights provide a foundation for understanding biological and disease mechanisms and offer potential biomarkers for diagnosis and therapeutic interventions.
 
 ## System Requirements
@@ -137,3 +139,5 @@ python vf2_analysis.py -size 3 -target demo_data/demo_data.gml -celltype 8 -outp
 *	-target: The file path for input cellular community graph.
 *	-celltype: The number of cell types in the input target gml (The input demo_data.gml here has 8 cell types).
 *	-outpath: Users should expect two files in this folder, one file is .gml file of the top overrepresented CC motif, and the other .csv file contains all specific size motifs' predicted occurrence number (The first column is motifs in igraph form, contains edge relationships between nodes. Second Column is cell type for each node. Third column is predicted occurrence number).
+
+
