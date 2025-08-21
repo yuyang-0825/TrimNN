@@ -7,7 +7,11 @@ import seaborn as sns
 from matplotlib.lines import Line2D
 import os
 
-
+def sort_motif_label(label: str) -> str:
+    parts = label.split("_")
+    parts_sorted = sorted(parts)
+    return "_".join(parts_sorted)
+    
 def parse_args():
     parser = argparse.ArgumentParser(description='Transfer input to gml file')
     parser.add_argument('-target', type=str, default='demo_data/demo_data.csv',
@@ -40,6 +44,9 @@ if __name__ == '__main__':
     color_map = dict(zip(unique_cell_types, palette))
 
     tri = Delaunay(points)
+
+    if motif_size > 1:
+        motif_label = sort_motif_label(motif_label)
 
     if motif_size == 1 or motif_size == 2 or motif_size == 3:
         plt.triplot(points[:, 0], points[:, 1], tri.simplices, color='grey', markersize=0.2, linewidth=0.1)
@@ -88,4 +95,5 @@ if __name__ == '__main__':
 
     else:
         print("For higher-dimensional motifs, due to their structural diversity, users can customize the visualization based on the specific motif patterns of interest.")
+
 
