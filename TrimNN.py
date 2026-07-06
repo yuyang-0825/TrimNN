@@ -346,6 +346,7 @@ def enumerate_triangle(graph_path,model_path,labelnum,k):
 
         if pred_exist > max_occur:
             max_pattern = initial_pattern.copy()
+            max_occur = pred_exist
             
     result.to_csv(os.path.join(result_path,"Predicted_occurrence_size3.csv"), index=False)
     return max_pattern
